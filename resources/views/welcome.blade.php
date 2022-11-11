@@ -17,8 +17,8 @@
                     </span>
                 </a>
                 <div class="flex items-center lg:order-2">
-                    <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"> Вход </a>
-                    <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 ml-2 rounded"> Регистрация </a>
+                    <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" href="{{ route('login') }}"> Вход </a>
+                    <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 ml-2 rounded" href="{{ route('register') }}"> Регистрация </a>
                 </div>
                 <div class="items-center justify-between hidden w-full lg:flex lg:w-auto lg:order-1">
                     <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0"></ul>
