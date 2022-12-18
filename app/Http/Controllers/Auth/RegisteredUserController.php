@@ -54,7 +54,7 @@ class RegisteredUserController extends Controller
             $message->to(request('email'))->subject('Hello There');
         });
 
-        session()->flash('success', 'Вы успешно зарегистрированы');
+        session()->flash('message', 'Вы успешно зарегистрированы');
 
         return redirect(RouteServiceProvider::HOME);
     }

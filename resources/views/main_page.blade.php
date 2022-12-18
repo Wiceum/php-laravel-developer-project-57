@@ -16,6 +16,6 @@
         </div>
     </section>
 </div>
-<x-success-registration-flash />
+<x-flash/>
 </body>
 </html>
