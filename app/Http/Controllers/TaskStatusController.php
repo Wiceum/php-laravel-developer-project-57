@@ -14,18 +14,16 @@ class TaskStatusController extends Controller
         return view('task_statuses.index', compact('statuses'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        $this->authorize('change-statuses');
+        $status = new TaskStatus();
+        return view('task_statuses.form', ['task_status' => $status, 'slot' => 'Создать']);
     }
 
     public function store(Request $request)
     {
+        $this->authorize('change-statuses');
         $validated = $this->validate($request, [
            'name' => 'required'
         ]);
@@ -37,48 +35,29 @@ class TaskStatusController extends Controller
         return redirect('/task_statuses');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\TaskStatus  $taskStatus
-     * @return \Illuminate\Http\Response
-     */
-    public function show(TaskStatus $taskStatus)
+    public function show()
     {
-        //
+        abort(403);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\TaskStatus  $taskStatus
-     * @return \Illuminate\Http\Response
-     */
     public function edit(TaskStatus $taskStatus)
     {
-        //
+        $this->authorize('change-statuses');
+        return view('task_statuses.form', ['task_status' => $taskStatus, 'slot' => 'Обновить']);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\TaskStatus  $taskStatus
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, TaskStatus $taskStatus)
     {
-        //
+        $this->authorize('change-statuses');
+        $validated = $this->validate($request, ['name' => 'required']);
+        $taskStatus->fill($validated)->save();
+        return redirect('task_statuses.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\TaskStatus  $taskStatus
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(TaskStatus $taskStatus)
     {
-        //
+        $this->authorize('change-statuses');
+        $taskStatus->delete();
+        return redirect('task_statuses.index');
     }
 }
