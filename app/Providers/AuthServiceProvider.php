@@ -25,6 +25,8 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('change-statuses', function ($user) {
+           return \Auth::check();
+        });
     }
 }
