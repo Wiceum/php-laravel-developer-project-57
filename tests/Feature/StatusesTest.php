@@ -23,6 +23,7 @@ class StatusesTest extends TestCase
             'name' => $this->faker->sentence
         ];
 
+        $this->signIn();
         $this->post('/task_statuses', $attributes)->assertRedirect('/task_statuses');
         $this->assertDatabaseHas('task_statuses', $attributes);
         $this->get('/task_statuses')->assertSee($attributes['name']);
@@ -30,7 +31,8 @@ class StatusesTest extends TestCase
 
     public function test_status_validation()
     {
-        $this->post('/task_statuses', [])->assertSessionHasErrors('name');
+
+        $this->signIn()->post('/task_statuses', [])->assertSessionHasErrors('name');
     }
 
     public function test_show_method()
