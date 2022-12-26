@@ -58,5 +58,10 @@
     "Verify Email Address": "Подтвердить email-адрес",
     "Verify Your Email Address": "Подтвердите Ваш email-адрес",
     "Whoops!": "Упс!",
-    "You are receiving this email because we received a password reset request for your account.": "Вы получили это письмо, потому что мы получили запрос на сброс пароля для Вашей учетной записи."
+    "You are receiving this email because we received a password reset request for your account.": "Вы получили это письмо, потому что мы получили запрос на сброс пароля для Вашей учетной записи.",
+    "Remember me": "Запомнить меня",
+    "Log in":  "Войти",
+    "Forgot your password?": "Забыли пароль?",
+    "Task manager": "Менеджер задач",
+    "Already registered?": "Уже зарегистрированы?"
 }

@@ -14,6 +14,9 @@
 
         <form method="POST" action="{{ route('login') }}">
             @csrf
+             <div>
+                 <h2 class="text-center text-3xl">{{ __('Task manager') }}</h2>
+             </div>
 
             <!-- Email Address -->
             <div>

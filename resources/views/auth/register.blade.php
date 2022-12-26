@@ -12,6 +12,10 @@
         <form method="POST" action="{{ route('register') }}">
             @csrf
 
+            <div>
+                <h2 class="text-center text-3xl py-2">{{ __('Task manager') }}</h2>
+            </div>
+
             <!-- Name -->
             <div>
                 <x-label for="name" :value="__('Name')" />
