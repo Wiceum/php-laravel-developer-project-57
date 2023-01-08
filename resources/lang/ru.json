@@ -63,5 +63,15 @@
     "Log in":  "Войти",
     "Forgot your password?": "Забыли пароль?",
     "Task manager": "Менеджер задач",
-    "Already registered?": "Уже зарегистрированы?"
+    "Already registered?": "Уже зарегистрированы?",
+    "Status": "Статус",
+    "Author": "Автор",
+    "Executor": "Исполнитель",
+    "Creation date": "Дата создания",
+    "Actions": "Действия",
+    "Change": "Изменить",
+    "Delete": "Удалить",
+    "Task was deleted": "Задача успешно удалена",
+    "Description": "Описание",
+    "Labels": "Метки"
 }
