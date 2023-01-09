@@ -37,11 +37,13 @@
                 </td>
                 @auth()
                     <td>
-                        <a data-confirm="Вы уверены?"
-                            href="{{ route('task_statuses.destroy', ['task_status' => $status]) }}"
-                           class="text-red-600 hover:text-red-900"> Удалить </a>
+                        <a href="{{ route('task_statuses.destroy', ['task_status' => $status]) }}"
+                           data-confirm="Вы уверены?"
+                           data-method="delete"
+                           rel="nofollow"
+                           class="text-red-600 hover:text-red-900"> {{__('Delete')}} </a>
                         <a href="{{ route('task_statuses.edit', ['task_status' => $status]) }}"
-                            class="text-blue-600 hover:text-gray-900"> Изменить </a>
+                            class="text-blue-600 hover:text-gray-900"> {{__('Change')}} </a>
                     </td>
                 @endauth
             </tr>
