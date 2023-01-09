@@ -33,6 +33,7 @@ class TaskStatusController extends Controller
         $status->save();
 
         return redirect('/task_statuses');
+        // "Статус успешно создан"
     }
 
     public function show()
@@ -56,8 +57,13 @@ class TaskStatusController extends Controller
 
     public function destroy(TaskStatus $taskStatus)
     {
+        if ($taskStatus->tasks->isNotEmpty()) {
+          return  redirect(route('task_statuses.index'))
+                    ->with('message', __('Failed to delete status'));
+        }
         $this->authorize('change-statuses');
         $taskStatus->delete();
-        return redirect('task_statuses.index');
+        return redirect(route('task_statuses.index'));
+        // "Статус успешно удален"
     }
 }
