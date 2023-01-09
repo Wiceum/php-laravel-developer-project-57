@@ -24,9 +24,7 @@ class TaskStatusController extends Controller
     public function store(Request $request)
     {
         $this->authorize('change-statuses');
-        $validated = $this->validate($request, [
-           'name' => 'required'
-        ]);
+        $validated = $this->validate($request, ['name' => 'required']);
 
         $status = new TaskStatus();
         $status->fill($validated);
@@ -58,7 +56,7 @@ class TaskStatusController extends Controller
     public function destroy(TaskStatus $taskStatus)
     {
         if ($taskStatus->tasks->isNotEmpty()) {
-          return  redirect(route('task_statuses.index'))
+            return  redirect(route('task_statuses.index'))
                     ->with('message', __('Failed to delete status'));
         }
         $this->authorize('change-statuses');
