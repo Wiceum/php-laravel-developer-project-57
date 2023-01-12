@@ -80,10 +80,6 @@ class TaskController extends Controller
 
         $this->authorize('delete-tasks', $task);
 
-        if ($task->author->id !== auth()->id()) {
-            abort(403);
-        }
-
         if ($task) {
             $task->delete();
         }
