@@ -27,8 +27,8 @@ class TasksTest extends TestCase
 
     public function test_get_creation_page()
     {
-        $this->signIn()->get('tasks/create')->assertOk();
         $this->get('tasks/create')->assertForbidden();
+        $this->signIn()->get('tasks/create')->assertOk();
     }
 
     public function test_store_task()
