@@ -696,11 +696,11 @@ select {
 .mb-5 {
   margin-bottom: 1.25rem;
 }
-.mt-2 {
-  margin-top: 0.5rem;
-}
 .ml-auto {
   margin-left: auto;
+}
+.mt-2 {
+  margin-top: 0.5rem;
 }
 .ml-1 {
   margin-left: 0.25rem;

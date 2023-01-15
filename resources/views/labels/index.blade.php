@@ -6,17 +6,9 @@
 
         <div class="w-full flex items-center">
             @auth()
-                <div class="w-full flex items-center">
-                    <div>
-                        <p>Здесь будет фильтр</p>
-                    </div>
-                    <div class="ml-auto">
                         <x-link-as-button href="{{ route('labels.create') }}">{{__('Create label')}}</x-link-as-button>
-                    </div>
-                </div>
             @endauth
         </div>
-
 
         <table class="mt-4">
             <thead class="border-b-2 border-solid border-black text-left">
