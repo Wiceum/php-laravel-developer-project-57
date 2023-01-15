@@ -74,5 +74,7 @@
     "Task was deleted": "Задача успешно удалена",
     "Description": "Описание",
     "Labels": "Метки",
-    "Failed to delete status": "Не удалось удалить статус"
+    "Failed to delete status": "Не удалось удалить статус",
+    "Create task": "Создать задачу",
+    "Create label": "Создать метку"
 }

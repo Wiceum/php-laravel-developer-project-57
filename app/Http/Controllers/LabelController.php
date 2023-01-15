@@ -7,10 +7,10 @@ use Illuminate\Http\Request;
 
 class LabelController extends Controller
 {
-
     public function index()
     {
-        //
+        $labels = Label::all();
+        return view('labels.index', ['labels' => $labels]);
     }
 
     public function create()
