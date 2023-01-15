@@ -12,7 +12,7 @@
                 <p>Здесь будет фильтр</p>
             </div>
             <div class="ml-auto">
-                <x-link-as-button href="{{ route('tasks.create') }}">Создать задачу</x-link-as-button>
+                <x-link-as-button href="{{ route('tasks.create') }}">{{__('Create task')}}</x-link-as-button>
             </div>
         </div>
     @endauth
