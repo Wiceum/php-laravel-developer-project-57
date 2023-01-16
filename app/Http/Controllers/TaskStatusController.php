@@ -18,7 +18,7 @@ class TaskStatusController extends Controller
     {
         $this->authorize('change-statuses');
         $status = new TaskStatus();
-        return view('task_statuses.form', ['task_status' => $status, 'slot' => 'Создать']);
+        return view('task_statuses.create', ['task_status' => $status]);
     }
 
     public function store(Request $request)
@@ -42,7 +42,7 @@ class TaskStatusController extends Controller
     public function edit(TaskStatus $taskStatus)
     {
         $this->authorize('change-statuses');
-        return view('task_statuses.form', ['task_status' => $taskStatus, 'slot' => 'Обновить']);
+        return view('task_statuses.edit', ['task_status' => $taskStatus]);
     }
 
     public function update(Request $request, TaskStatus $taskStatus)
@@ -50,7 +50,7 @@ class TaskStatusController extends Controller
         $this->authorize('change-statuses');
         $validated = $this->validate($request, ['name' => 'required']);
         $taskStatus->fill($validated)->save();
-        return redirect('task_statuses.index');
+        return redirect(route('task_statuses.index'))->with('message', __('Status updated successfully'));
     }
 
     public function destroy(TaskStatus $taskStatus)

@@ -76,5 +76,6 @@
     "Labels": "Метки",
     "Failed to delete status": "Не удалось удалить статус",
     "Create task": "Создать задачу",
-    "Create label": "Создать метку"
+    "Create label": "Создать метку",
+    "Status updated successfully": "Статус успешно обновлен"
 }
