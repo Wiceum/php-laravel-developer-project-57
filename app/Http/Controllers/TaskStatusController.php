@@ -30,7 +30,7 @@ class TaskStatusController extends Controller
         $status->fill($validated);
         $status->save();
 
-        return redirect('/task_statuses');
+        return redirect('/task_statuses')->with('message', __('Status successfully created'));
         // "Статус успешно создан"
     }
 
@@ -61,7 +61,7 @@ class TaskStatusController extends Controller
         }
         $this->authorize('change-statuses');
         $taskStatus->delete();
-        return redirect(route('task_statuses.index'));
+        return redirect(route('task_statuses.index'))->with('message', __('Status successfully deleted'));
         // "Статус успешно удален"
     }
 }
