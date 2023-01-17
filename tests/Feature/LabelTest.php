@@ -37,4 +37,11 @@ class LabelTest extends TestCase
         Label::factory()->create(['name' => 'test']);
         $this->get('/labels/1')->assertForbidden();
     }
+
+    public function test_edit_label()
+    {
+        Label::factory(['name' => 'test_label_name', 'description' => 'test_label_description'])->create();
+        $this->get('labels/1/edit')->assertForbidden();
+        $this->signIn()->get('labels/1/edit')->assertSee(['test_label_name', 'test_label_description']);
+    }
 }

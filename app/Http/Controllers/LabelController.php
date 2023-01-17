@@ -39,7 +39,8 @@ class LabelController extends Controller
 
     public function edit(Label $label)
     {
-        return view('label.edit', ['label' => $label]);
+        $this->authorize('change-labels');
+        return view('labels.edit', ['label' => $label]);
     }
 
     public function update(Request $request, Label $label)
