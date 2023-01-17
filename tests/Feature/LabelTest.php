@@ -44,4 +44,12 @@ class LabelTest extends TestCase
         $this->get('labels/1/edit')->assertForbidden();
         $this->signIn()->get('labels/1/edit')->assertSee(['test_label_name', 'test_label_description']);
     }
+
+    public function test_update_label()
+    {
+        Label::factory()->create();
+        $this->patch('/labels/1', ['name' => 'test'])->assertForbidden();
+        $this->signIn()->patch('/labels/1', ['name' => 'test_name']);
+        $this->assertDatabaseHas('labels', ['name' => 'test_name']);
+    }
 }

@@ -45,7 +45,13 @@ class LabelController extends Controller
 
     public function update(Request $request, Label $label)
     {
-        //
+        $this->authorize('change-labels');
+        $validated = $request->validate([
+            'name' => 'required',
+            'description' => 'nullable'
+        ]);
+        $label->fill($validated)->save();
+        return redirect(route('labels.index'))->with('message', __('Label successfully updated'));
     }
 
     public function destroy(Label $label)

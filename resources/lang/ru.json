@@ -82,5 +82,6 @@
     "Status successfully created": "Статус успешно создан",
     "Create": "Создать",
     "Create a label": "Создать метку",
-    "Label created successfully": "Метка успешно создана"
+    "Label created successfully": "Метка успешно создана",
+    "Label successfully updated": "Метка успешно обновлена"
 }
