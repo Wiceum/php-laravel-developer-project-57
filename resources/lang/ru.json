@@ -81,5 +81,6 @@
     "Status successfully deleted": "Статус успешно удален",
     "Status successfully created": "Статус успешно создан",
     "Create": "Создать",
-    "Create a label": "Создать метку"
+    "Create a label": "Создать метку",
+    "Label created successfully": "Метка успешно создана"
 }
