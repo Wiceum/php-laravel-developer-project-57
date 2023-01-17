@@ -15,7 +15,9 @@ class LabelController extends Controller
 
     public function create()
     {
-        //
+        $this->authorize('change-labels');
+        $label = new Label();
+        return view('labels.create', ['label' => $label]);
     }
 
     public function store(Request $request)
@@ -30,7 +32,7 @@ class LabelController extends Controller
 
     public function edit(Label $label)
     {
-        //
+        return view('label.edit', ['label' => $label]);
     }
 
     public function update(Request $request, Label $label)

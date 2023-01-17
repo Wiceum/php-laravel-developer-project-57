@@ -47,5 +47,12 @@ class AuthServiceProvider extends ServiceProvider
                 return $task->author->is($user);
             }
         );
+
+        Gate::define(
+            'change-labels', //full CRUD
+            function ($user) {
+                return \Auth::check();
+            }
+        );
     }
 }
