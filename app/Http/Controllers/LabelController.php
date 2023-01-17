@@ -22,12 +22,19 @@ class LabelController extends Controller
 
     public function store(Request $request)
     {
-        //
+        $this->authorize('change-labels');
+        $validated = $request->validate([
+            'name' => 'required',
+            'description' => 'nullable'
+        ]);
+        $label = new Label();
+        $label->fill($validated)->save();
+        return redirect()->route('labels.index')->with('message', __('Label created successfully'));
     }
 
     public function show(Label $label)
     {
-        //
+        abort(403);
     }
 
     public function edit(Label $label)

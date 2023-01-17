@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Label;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -21,4 +22,19 @@ class LabelTest extends TestCase
             ->assertSee(['Create a label', 'Name', 'Description']);
     }
 
+    public function test_store_label()
+    {
+        $this->post('/labels', ['name' => 'test_label'])->assertForbidden();
+
+        $this->signIn()->post('/labels', ['name' => '', 'description' => '123'])->assertSessionHasErrors();
+
+        $this->signIn()->post('/labels', ['name' => 'test_label']);
+        $this->assertDatabaseHas('labels', ['name' => 'test_label']);
+    }
+
+    public function test_show_label()
+    {
+        Label::factory()->create(['name' => 'test']);
+        $this->get('/labels/1')->assertForbidden();
+    }
 }
