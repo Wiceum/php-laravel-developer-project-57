@@ -56,6 +56,12 @@ class LabelController extends Controller
 
     public function destroy(Label $label)
     {
-        //
+        $this->authorize('change-labels');
+
+        if ($label->tasks()->count() !== 0) {
+            return redirect(route('labels.index'))->with('message', __('Label successfully deleted'));
+        }
+        $label->delete();
+        return redirect(route('labels.index'))->with('message', __('Label successfully deleted'));
     }
 }

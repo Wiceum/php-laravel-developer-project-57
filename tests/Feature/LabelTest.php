@@ -3,6 +3,8 @@
 namespace Tests\Feature;
 
 use App\Models\Label;
+use App\Models\Task;
+use http\Client\Curl\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -51,5 +53,20 @@ class LabelTest extends TestCase
         $this->patch('/labels/1', ['name' => 'test'])->assertForbidden();
         $this->signIn()->patch('/labels/1', ['name' => 'test_name']);
         $this->assertDatabaseHas('labels', ['name' => 'test_name']);
+    }
+
+    public function test_delete_label()
+    {
+        Label::factory()->create();
+        $this->delete('/labels/1')->assertForbidden();
+        $this->signIn()->delete('/labels/1');
+        $this->assertDatabaseCount('labels', 0);
+
+/*        $this->seed();
+        $user = \App\Models\User::factory()->create(['name' => 'test_user_2']);
+        $label = Label::factory()->create(['name' => 'test_label']);
+        $task = Task::factory()->create(['name' => 'test_task_2', 'created_by_id' => $user->id]);
+        $this->signIn($user)->patch('/task/'. $task->id)
+        $task->labels()->save($task);*/
     }
 }
