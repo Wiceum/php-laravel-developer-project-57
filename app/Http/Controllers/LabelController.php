@@ -59,7 +59,7 @@ class LabelController extends Controller
         $this->authorize('change-labels');
 
         if ($label->tasks()->count() !== 0) {
-            return redirect(route('labels.index'))->with('message', __('Label successfully deleted'));
+            return redirect(route('labels.index'))->with('message', __('Failed to delete label'));
         }
         $label->delete();
         return redirect(route('labels.index'))->with('message', __('Label successfully deleted'));

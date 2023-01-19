@@ -84,5 +84,6 @@
     "Create a label": "Создать метку",
     "Label created successfully": "Метка успешно создана",
     "Label successfully updated": "Метка успешно обновлена",
-    "Label successfully deleted": "Метка успешно удалена"
+    "Label successfully deleted": "Метка успешно удалена",
+    "Failed to delete label": "Не удалось удалить метку"
 }
