@@ -15,9 +15,11 @@ class CreateLabelTaskTable extends Migration
     {
         Schema::create('label_task', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('label_id')->constrained()->restrictOnDelete();
-            $table->foreignId('task_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('label_id')->constrained('labels')->restrictOnDelete();
+            $table->foreignId('task_id')->constrained('tasks');
             $table->timestamps();
+
+            $table->unique(['label_id, task_id']);
         });
 
     }

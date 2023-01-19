@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Label;
 use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -18,7 +19,7 @@ class TaskController extends Controller
         $this->authorize('customize-tasks');
 
         $task = new Task();
-        return view('tasks.create', ['task' => $task]);
+        return view('tasks.create', ['task' => $task, 'labels' => Label::all()]);
     }
 
 
@@ -31,12 +32,17 @@ class TaskController extends Controller
             'description' => 'nullable',
             'status_id' => 'required|numeric|integer',
             'created_by_id' => 'required',
-            'assigned_to_id' => 'nullable|numeric|integer'
+            'assigned_to_id' => 'nullable|numeric|integer',
+            'labels' => 'exist:labels,id'
         ]);
 
         $task = new Task();
         $task->fill($validated);
         $task->save();
+
+        $labels = $request->get('labels');
+        $task->labels()->attach($labels);
+
         return redirect()->route('tasks.index')->with('message', 'Задача успешно добавлена');
     }
 
@@ -50,9 +56,8 @@ class TaskController extends Controller
     {
         $this->authorize('customize-tasks');
 
-        auth()->check();
         $task = Task::findOrFail($id);
-        return view('tasks.edit', ['task' => $task]);
+        return view('tasks.edit', ['task' => $task, 'labels' => Label::all()]);
     }
 
     public function update(Request $request, $id)
@@ -60,18 +65,21 @@ class TaskController extends Controller
         $this->authorize('customize-tasks');
 
         $task = Task::findOrFail($id);
-
         $validated = $this->validate($request, [
             'name' => ['required', Rule::unique('tasks')->ignore($task->id)],
             'description' => 'nullable',
             'status_id' => 'required|numeric|integer',
-            'assigned_to_id' => 'nullable|numeric|integer'
+            'assigned_to_id' => 'nullable|numeric|integer',
+            'labels' => 'exists:labels,id'
         ]);
 
-        $task->fill($validated);
+        $labels = $validated['labels'] ?? [];
+
+        $task->fill(collect($validated)->except('labels')->toArray());
         $task->save();
-        return redirect()
-            ->route('tasks.index');
+        $task->labels()->sync($labels);
+
+        return redirect()->route('tasks.index');
     }
 
     public function destroy($id)

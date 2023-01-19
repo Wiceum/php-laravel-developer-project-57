@@ -61,12 +61,17 @@ class LabelTest extends TestCase
         $this->delete('/labels/1')->assertForbidden();
         $this->signIn()->delete('/labels/1');
         $this->assertDatabaseCount('labels', 0);
+    }
 
-/*        $this->seed();
+    public function test_delete_attached_label()
+    {
+        $this->seed();
         $user = \App\Models\User::factory()->create(['name' => 'test_user_2']);
         $label = Label::factory()->create(['name' => 'test_label']);
         $task = Task::factory()->create(['name' => 'test_task_2', 'created_by_id' => $user->id]);
-        $this->signIn($user)->patch('/task/'. $task->id)
-        $task->labels()->save($task);*/
+        $task->labels()->attach($label);
+
+        $this->delete($label);
+        $this->assertDatabaseHas('labels', ['id' => $label->id, 'name' => $label->name]);
     }
 }

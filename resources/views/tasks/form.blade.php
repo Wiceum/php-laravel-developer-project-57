@@ -44,10 +44,22 @@
     </div>
 
     <select name="assigned_to_id" class="mb-5">
+        <option value="">------</option>
         @foreach($users as $user)
             <option value="{{ $user->id }}">
                 {{ $user->id }} - {{ $user->name }}
             </option>
+        @endforeach
+    </select>
+
+    <div class="mt-2">
+        {{ Form::label('labels', 'Метки') }}
+    </div>
+
+    <select name="labels[]" multiple class="mb-5 select is-multiple">
+        <option value="">-------</option>
+        @foreach($labels as $label)
+            <option value="{{ $label->id }}">{{ $label->id }} - {{ $label->name }}</option>
         @endforeach
     </select>
 </div>

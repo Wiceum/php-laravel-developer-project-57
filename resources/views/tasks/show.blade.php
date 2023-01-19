@@ -19,7 +19,11 @@
         <span class="font-black">{{__('Labels')}}:</span>
     </p>
     <div>
-        Здесь будут Метки
+        @foreach($task->labels as $label)
+            <div class="text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-1 bg-blue-200 text-blue-700 rounded-full">
+                {{ $label->name }}
+            </div>
+        @endforeach
     </div>
 </div>
 
