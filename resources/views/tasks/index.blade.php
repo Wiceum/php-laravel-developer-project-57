@@ -45,7 +45,7 @@
                     </a>
                 </td>
                 <td>{{ $task->author->name }}</td>
-                <td>{{ $task->executor->name }}</td>
+                <td>{{ $task->executor ? $task->executor->name : '' }}</td>
                 <td>{{ $task->created_at }}</td>
                 @auth()
                 <td>
@@ -55,7 +55,7 @@
                         {{__('Change')}}
                     </a>
                     @can('delete-tasks', $task)
-                        <a href="{{route('tasks.destroy', [$task])}}"
+                        <a href="{{ route('tasks.destroy', [$task]) }}"
                             data-confirm="Вы уверены?"
                             data-method="delete"
                             rel="nofollow"
