@@ -15,7 +15,7 @@
 
 <div class="flex flex-col">
     <div class="mt-2">
-        {{ Form::label('name', 'Название') }}
+        {{ Form::label('name', __('Name')) }}
     </div>
 
     <div class="mt-2">
@@ -23,12 +23,12 @@
     </div>
 
     <div class="mt-2">
-        {{ Form::label('description', 'Содержание') }}
+        {{ Form::label('description', __('Description')) }}
     </div>
     {{ Form::textarea('description') }}
 
     <div class="mt-2">
-        {{ Form::label('status_id', 'Статус') }}
+        {{ Form::label('status_id', __('Status')) }}
     </div>
 
     <select name="status_id" class="mb-5">
@@ -40,7 +40,7 @@
     </select>
 
     <div class="mt-2">
-        {{ Form::label('assigned_to_id', 'Исполнитель') }}
+        {{ Form::label('assigned_to_id', __('Executor')) }}
     </div>
 
     <select name="assigned_to_id" class="mb-5">
@@ -53,7 +53,7 @@
     </select>
 
     <div class="mt-2">
-        {{ Form::label('labels', 'Метки') }}
+        {{ Form::label('labels', __('Labels')) }}
     </div>
 
     <select name="labels[]" multiple class="mb-5 select is-multiple">

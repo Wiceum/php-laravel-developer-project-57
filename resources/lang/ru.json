@@ -90,5 +90,9 @@
     "Tasks": "Задачи",
     "Statuses": "Статусы",
     "Registration": "Регистрация",
-    "Create status": "Создать статус"
+    "Create status": "Создать статус",
+    "Log out": "Выход",
+    "Update": "Обновить",
+    "Edit task": "Изменение задачи",
+    "Edit status": "Изменение статуса"
 }

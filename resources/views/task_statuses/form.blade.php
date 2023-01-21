@@ -1,5 +1,5 @@
 <div class="flex flex-col">
-   {{ Form::label('name', 'Имя') }}
+   {{ Form::label('name', __('Name')) }}
    <div class="mt-2 mb-4">
        {{ Form::text('name') }}
    </div>
