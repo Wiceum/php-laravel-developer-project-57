@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="grid col-span-full">
-    <h1 class="text-3xl mb-5">Задачи</h1>
+    <h1 class="text-3xl mb-5">{{__('Tasks')}}</h1>
 
     <div class="w-full flex items-center">
     @include('tasks.filter')

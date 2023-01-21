@@ -85,5 +85,10 @@
     "Label created successfully": "Метка успешно создана",
     "Label successfully updated": "Метка успешно обновлена",
     "Label successfully deleted": "Метка успешно удалена",
-    "Failed to delete label": "Не удалось удалить метку"
+    "Failed to delete label": "Не удалось удалить метку",
+    "Task Manager": "Менеджер задач",
+    "Tasks": "Задачи",
+    "Statuses": "Статусы",
+    "Registration": "Регистрация",
+    "Create status": "Создать статус"
 }

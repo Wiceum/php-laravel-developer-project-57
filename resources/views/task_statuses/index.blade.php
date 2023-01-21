@@ -2,13 +2,13 @@
 
 @section('content')
 <div class="grid col-span-full">
-    <h1 class="mb-5" style="font-size: 3rem">Статусы</h1>
+    <h1 class="mb-5" style="font-size: 3rem">{{__('Statuses')}}</h1>
     @auth()
         <div>
             <a href="{{ route('task_statuses.create') }}"
                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
             >
-                Создать статус
+                {{ __('Create status') }}
             </a>
         </div>
     @endauth
@@ -16,10 +16,10 @@
         <thead class="border-b-2 border-solid border-black text-left">
             <tr>
                 <th>ID</th>
-                <th>Имя</th>
-                <th>Дата создания</th>
+                <th>{{__('Name')}}</th>
+                <th>{{__('Creation date')}}</th>
                 @auth()
-                    <th>Действия</th>
+                    <th>{{__('Actions')}}</th>
                 @endauth
             </tr>
         </thead>
