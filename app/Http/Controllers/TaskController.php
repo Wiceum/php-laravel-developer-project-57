@@ -6,11 +6,22 @@ use App\Models\Label;
 use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class TaskController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        // using Spatie\QueryBuilder
+
+        if ($request->query->has('filter')) {
+            $tasks = QueryBuilder::for(Task::class)
+                ->allowedFilters('status_id', 'created_by_id', 'assigned_to_id')
+                ->allowedFields('status_id', 'created_by_id', 'assigned_to_id')
+                ->allowedIncludes(['task_statuses', 'users'])
+                ->get();
+            return view('tasks.index', ['tasks' => $tasks]);
+        }
         return view('tasks.index', ['tasks' => Task::all()]);
     }
 
@@ -33,14 +44,14 @@ class TaskController extends Controller
             'status_id' => 'required|numeric|integer',
             'created_by_id' => 'required',
             'assigned_to_id' => 'nullable|numeric|integer',
-            'labels' => 'exist:labels,id'
+            'labels' => 'exists:labels,id'
         ]);
 
-        $task = new Task();
-        $task->fill($validated);
-        $task->save();
 
-        $labels = $request->get('labels');
+        $task = new Task();
+        $task->fill(collect($validated)->except('labels')->toArray())->save();
+
+        $labels = $validated['labels'] ?? [];
         $task->labels()->attach($labels);
 
         return redirect()->route('tasks.index')->with('message', 'Задача успешно добавлена');

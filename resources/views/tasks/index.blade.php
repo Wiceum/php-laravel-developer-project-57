@@ -5,17 +5,17 @@
     <h1 class="text-3xl mb-5">{{__('Tasks')}}</h1>
 
     <div class="w-full flex items-center">
-    @include('tasks.filter')
-    @auth()
-        <div class="w-full flex items-center">
+
             <div>
-                <p>Здесь будет фильтр</p>
+                <x-filter></x-filter>
             </div>
+
+            @auth()
             <div class="ml-auto">
                 <x-link-as-button href="{{ route('tasks.create') }}">{{__('Create task')}}</x-link-as-button>
             </div>
-        </div>
-    @endauth
+            @endauth
+
     </div>
 
 
