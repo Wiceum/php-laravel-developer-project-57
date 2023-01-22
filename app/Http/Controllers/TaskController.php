@@ -19,7 +19,8 @@ class TaskController extends Controller
                 ->allowedFilters('status_id', 'created_by_id', 'assigned_to_id')
                 ->allowedFields('status_id', 'created_by_id', 'assigned_to_id')
                 ->allowedIncludes(['task_statuses', 'users'])
-                ->paginate(15);
+                ->paginate(15)
+                ->withQueryString();
             return view('tasks.index', ['tasks' => $tasks]);
         }
         return view('tasks.index', ['tasks' => Task::paginate(15)]);
