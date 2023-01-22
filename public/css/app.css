@@ -684,6 +684,9 @@ select {
 .mt-4 {
   margin-top: 1rem;
 }
+.ml-2 {
+  margin-left: 0.5rem;
+}
 .ml-4 {
   margin-left: 1rem;
 }
@@ -707,9 +710,6 @@ select {
 }
 .mr-2 {
   margin-right: 0.5rem;
-}
-.ml-2 {
-  margin-left: 0.5rem;
 }
 .mt-8 {
   margin-top: 2rem;
@@ -987,17 +987,17 @@ select {
 .fill-current {
   fill: currentColor;
 }
-.p-6 {
-  padding: 1.5rem;
-}
-.p-2 {
-  padding: 0.5rem;
-}
 .p-3\.5 {
   padding: 0.875rem;
 }
 .p-3 {
   padding: 0.75rem;
+}
+.p-6 {
+  padding: 1.5rem;
+}
+.p-2 {
+  padding: 0.5rem;
 }
 .px-4 {
   padding-left: 1rem;
@@ -1042,10 +1042,6 @@ select {
 .py-12 {
   padding-top: 3rem;
   padding-bottom: 3rem;
-}
-.py-3 {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
 }
 .pt-8 {
   padding-top: 2rem;

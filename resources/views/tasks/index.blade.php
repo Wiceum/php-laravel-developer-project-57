@@ -70,8 +70,8 @@
         </tbody>
     </table>
 
-    <div>
-        <nav></nav>
+    <div class="mt-4">
+        {{ $tasks->links() }}
     </div>
     </div>
 @endsection
