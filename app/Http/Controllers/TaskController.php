@@ -96,7 +96,8 @@ class TaskController extends Controller
         $task->save();
         $task->labels()->sync($labels);
 
-        return redirect()->route('tasks.index');
+        return redirect()->route('tasks.index')
+            ->with('message', __('Task successfully updated'));
     }
 
     public function destroy($id)
