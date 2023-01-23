@@ -18,9 +18,9 @@ class TasksTest extends TestCase
 
     public function test_tasks_index()
     {
-        $this->seed();
-        $task = Task::factory()->create();
-        $status = $task->status()->first()->name;
+        $this->seed('TestSeeder');
+        $task = Task::factory()->create(['created_by_id' => 1, 'assigned_to_id' => 1]);
+        $status = $task->status->name;
 
         $this->get('tasks')->assertSee([$task->id, $task->name, $status]);
     }
@@ -50,11 +50,11 @@ class TasksTest extends TestCase
 
     public function test_show_task()
     {
-        $this->seed();
-        $task = Task::factory()->create();
+        $this->seed('TestSeeder');
+        $task = Task::factory()->create(['created_by_id' => 1, 'assigned_to_id' => 1]);
 
         $name = $task->name;
-        $status = $task->status()->first()->name;
+        $status = $task->status->name;
         $description = $task->description;
 
 
@@ -66,8 +66,8 @@ class TasksTest extends TestCase
 
     public function test_get_edit_page()
     {
-        $this->seed();
-        $task = Task::factory()->create();
+        $this->seed('TestSeeder');
+        $task = Task::factory()->create(['created_by_id' => 1, 'assigned_to_id' => 1]);
 
         $this->get('tasks/'. $task->id. '/edit')->assertForbidden();
         $this->signIn()->get('tasks/'. $task->id. '/edit')->assertSee([
@@ -80,8 +80,8 @@ class TasksTest extends TestCase
 
     public function test_update_task()
     {
-        $this->seed();
-        $task = Task::factory()->create();
+        $this->seed('TestSeeder');
+        $task = Task::factory()->create(['created_by_id' => 1, 'assigned_to_id' => 1]);
 
         $this->patch('tasks/'. $task->id)->assertForbidden();
         $this->signIn()->patch('tasks/'. $task->id, [
@@ -103,7 +103,7 @@ class TasksTest extends TestCase
         $user_1 = User::factory()->create(); //author
         $user_2 = User::factory()->create();
         TaskStatus::factory()->count(4)->create();
-        $task = Task::factory()->create(['created_by_id' => $user_1->id]);
+        $task = Task::factory()->create(['created_by_id' => $user_1->id, 'assigned_to_id' => $user_1->id]);
 
         $this->actingAs($user_2)->delete('/tasks/'. $task->id)->assertForbidden();
         $this->actingAs($user_1)->delete('/tasks/'. $task->id)

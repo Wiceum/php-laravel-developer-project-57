@@ -5,14 +5,13 @@ namespace Database\Seeders;
 use App\Models\Task;
 use App\Models\TaskStatus;
 use App\Models\User;
-use Database\Factories\TaskFactory;
 use Illuminate\Database\Seeder;
 use Str;
 
-class DatabaseSeeder extends Seeder
+class TestSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
@@ -28,11 +27,11 @@ class DatabaseSeeder extends Seeder
         TaskStatus::create(['name' => 'в архиве']);
 
         User::create([
-            'name' => 'test_user',
-            'email' => 'test_user@example.com',
-            'password'=>'$2y$10$ZmpI3LXaNELSDspCoCpJ/ePtFJAHGR0weAlKFT7mfs7C4ox2CvT1y',
-            'email_verified_at' => now(),
-            'remember_token' => Str::random(10)]
+                'name' => 'test_user',
+                'email' => 'test_user@example.com',
+                'password'=>'$2y$10$ZmpI3LXaNELSDspCoCpJ/ePtFJAHGR0weAlKFT7mfs7C4ox2CvT1y',
+                'email_verified_at' => now(),
+                'remember_token' => Str::random(10)]
         );
 
         Task::create([
@@ -41,11 +40,5 @@ class DatabaseSeeder extends Seeder
             'status_id' => 1,
             'created_by_id' => 1,
             'assigned_to_id' => 1
-        ]);
-
-        $this->call([
-            LabelSeeder::class,
-            ProdSeeder::class
-        ]);
-    }
+        ]);    }
 }
