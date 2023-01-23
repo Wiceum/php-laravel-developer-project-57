@@ -13,4 +13,4 @@ test:
 coverage_test:
 	composer exec --verbose phpunit tests -- --coverage-text
 
-check: validate lint coverage_test
+check: validate lint test
