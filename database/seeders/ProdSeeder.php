@@ -25,9 +25,9 @@ class ProdSeeder extends Seeder
         ['Пофиксить спеку во всех репозиториях', ' Передать Олегу, чтобы больше не ронял прод'],
         ['Вернуть крошки', 'Андрей, это задача для тебя'],
         ['Установить Linux', 'Не забыть потестировать'],
-        ['Съесть еще этих прекрасных французских булочек', ''],
+        ['Поставить чайник', ''],
         ['Добавить поиск по фото', 'Только не по моему'],
-
+        ['Обновить фотошоп', '']
     ];
 
     /**
@@ -40,14 +40,14 @@ class ProdSeeder extends Seeder
         $col = collect($this->taskData);
         $labels = Label::all();
         User::factory()->count(15)->create();
-        Task::factory()->count(15)->sequence(function ($sequence) use (&$col) {
+        Task::factory()->count(16)->sequence(function ($sequence) use (&$col) {
             $piece = $col->shift();
             $col = $col->shuffle();
             return [
             'name' => $piece[0],
             'description' => $piece[1],
-            'created_by_id' => rand(2,16),
-            'assigned_to_id' => rand(2, 16),
+            'created_by_id' => rand(1,15),
+            'assigned_to_id' => rand(1, 15),
             ];
         }
     )
