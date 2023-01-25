@@ -8,7 +8,7 @@
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="{{ asset('css/app.css', true) }}">
+        <link rel="stylesheet" href="{{ asset('css/app.css', $_ENV['IS_ASSETS_SECURE']) }}">
         <!-- Scripts -->
         <!-- @Vite -->
     </head>
