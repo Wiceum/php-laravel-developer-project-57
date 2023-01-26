@@ -18,8 +18,6 @@ class CreateLabelTaskTable extends Migration
             $table->foreignId('label_id')->constrained('labels')->restrictOnDelete();
             $table->foreignId('task_id')->constrained('tasks');
             $table->timestamps();
-
-            $table->index(['label_id, task_id']);
         });
 
     }
