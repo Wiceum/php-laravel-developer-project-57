@@ -50,9 +50,9 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        Mail::raw('It works', function ($message) {
+/*        Mail::raw('It works', function ($message) {
             $message->to(request('email'))->subject('Hello There');
-        });
+        });*/
 
         session()->flash('message', 'Вы успешно зарегистрированы');
 
