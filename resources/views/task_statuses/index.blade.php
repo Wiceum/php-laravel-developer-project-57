@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="grid col-span-full">
-    <h1 class="mb-5" style="font-size: 3rem">{{__('Statuses')}}</h1>
+    <h1 class="mb-5 text-3xl">{{__('Statuses')}}</h1>
     @auth()
         <div>
             <a href="{{ route('task_statuses.create') }}"
