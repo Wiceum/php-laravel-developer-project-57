@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Label;
 use App\Models\Task;
+use Doctrine\DBAL\Query\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Spatie\QueryBuilder\AllowedFilter;
@@ -16,7 +17,13 @@ class TaskController extends Controller
         // using Spatie\QueryBuilder
 
         if ($request->query->has('filter')) {
-            $tasks = QueryBuilder::for(Task::class)
+            $this->validate($request, [
+                'filter.status_id' => ['numeric', 'integer', 'nullable'],
+                'filter.created_by_id' => ['numeric', 'integer', 'nullable'],
+                'filter.assigned_to_id' => ['numeric', 'integer', 'nullable']
+            ]);
+
+            $tasks = QueryBuilder::for(Task::class, $request)
                 ->allowedFilters([
                     AllowedFilter::exact('status_id'),
                     AllowedFilter::exact('created_by_id'),
