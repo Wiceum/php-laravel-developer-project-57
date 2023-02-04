@@ -46,7 +46,7 @@
                 </td>
                 <td>{{ $task->author->name }}</td>
                 <td>{{ $task->executor ? $task->executor->name : '' }}</td>
-                <td>{{ $task->created_at }}</td>
+                <td>{{ $task->created_at->format('d.m.Y') }}</td>
                 @auth()
                 <td>
                     <a href="{{ route('tasks.edit', ['task' => $task]) }}"
