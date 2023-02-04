@@ -4,7 +4,6 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use function PHPUnit\Framework\isEmpty;
 
 class SetLanguage
 {
@@ -17,14 +16,11 @@ class SetLanguage
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!isEmpty($request->getLanguages()))
-        {
-            $locale = $this->extractLocale($request);
-            if (in_array($locale, config('app.locales'))) {
+        $locale = $this->extractLocale($request);
+        if ($locale === 'en') {
                 app()->setLocale($locale);
-            } else {
-                app()->setLocale('ru');
-            }
+        } else {
+            app()->setLocale('ru');
         }
         return $next($request);
     }
