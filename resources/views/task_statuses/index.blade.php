@@ -4,12 +4,12 @@
 <div class="grid col-span-full">
     <h1 class="mb-5 text-3xl">{{__('Statuses')}}</h1>
     @auth()
-        <div>
-            <a href="{{ route('task_statuses.create') }}"
+        <div class="w-full flex items-center">
+            <x-link-as-button href="{{ route('task_statuses.create') }}"
                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
             >
                 {{ __('Create status') }}
-            </a>
+            </x-link-as-button>
         </div>
     @endauth
     <table class="mt-4">
