@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 echo "Running composer"
 composer install --no-dev --working-dir=/var/www/html
-composer install fakerphp/faker
+composer composer require fakerphp/faker
 
 echo "Caching config..."
 php artisan config:cache
