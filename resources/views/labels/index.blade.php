@@ -6,7 +6,9 @@
 
         <div class="w-full flex items-center">
             @auth()
-                        <x-link-as-button href="{{ route('labels.create') }}">{{__('Create label')}}</x-link-as-button>
+                <x-link-as-button href="{{ route('labels.create') }}"
+                                  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                >{{__('Create label')}}</x-link-as-button>
             @endauth
         </div>
 
